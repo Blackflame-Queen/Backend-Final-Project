@@ -1,0 +1,15 @@
+{
+  "recipeName": "Matcha Frappe",
+  "specialEquipment": ["Blender"],
+  "ratios": {
+    "milk": 3,
+    "syrup": 2,
+    "matcha": 1,
+    "blendedIce": 1,
+    "whippedCream": 1
+  },
+  "directions": "Blend together ice, milk, vanilla or white chocolate syrup, and matcha powder. Top with whipped cream",
+  "ingredients": [
+    "Matcha", "Milk", "Syrup", "Whipped Cream", "Blended Ice"
+  ]
+}

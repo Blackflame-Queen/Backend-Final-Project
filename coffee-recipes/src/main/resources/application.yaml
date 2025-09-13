@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    username: coffee_recipes
+    password: coffee_recipes
+    url: jdbc:mysql://localhost:3306/coffee_recipes
+    
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+    defer-datasource-initialization: true
+    
+  sql:
+    init:
+      mode: always
