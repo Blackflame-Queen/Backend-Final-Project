@@ -23,39 +23,28 @@ VALUES ('Latte', 'Pull a shot of espresso. Steam milk until smooth. Pour steamed
 INSERT INTO recipe (recipe_name, directions, special_equipment_id) 
 VALUES ('Mocha', 'Pull a shot of espresso. Mix with chocolate. Add steamed milk and top with whipped cream.', 1);
 
--- Americano ratio
-INSERT INTO ratios (coffee, water, milk, chocolate, syrup, cinnamon, whipped_cream, recipe_id) 
-VALUES (1, 3, NULL, NULL, NULL, NULL, NULL, 1);
+INSERT INTO ratios (coffee, water, recipe_id) 
+VALUES (1, 2, 1);
 
--- Cappuccino ratio
-INSERT INTO ratios (coffee, water, milk, chocolate, syrup, cinnamon, whipped_cream, recipe_id) 
-VALUES (1, 2, 2, NULL, NULL, NULL, NULL, 2);
+INSERT INTO ratios (coffee, milk, recipe_id) 
+VALUES (1, 2, 2);
 
--- Latte ratio
-INSERT INTO ratios (coffee, water, milk, chocolate, syrup, cinnamon, whipped_cream, recipe_id) 
-VALUES (1, 2, 3, NULL, NULL, NULL, NULL, 3);
+INSERT INTO ratios (coffee, milk, recipe_id) 
+VALUES (1, 3, 3);
 
--- Mocha ratio
-INSERT INTO ratios (coffee, water, milk, chocolate, syrup, cinnamon, whipped_cream, recipe_id) 
-VALUES (1, 2, 2, 1, NULL, NULL, 1, 4);
+INSERT INTO ratios (coffee, milk, chocolate, whipped_cream, recipe_id) 
+VALUES (1, 2, 1, 1, 4);
 
--- Americano:
 INSERT INTO recipe_ingredients (recipe_id, ingredients_id) VALUES (1, 1);
-INSERT INTO recipe_ingredients (recipe_id, ingredients_id) VALUES (1, 2);
+INSERT INTO recipe_ingredients (recipe_id, ingredients_id) VALUES (1, 3);
 
--- Cappuccino:
 INSERT INTO recipe_ingredients (recipe_id, ingredients_id) VALUES (2, 1);
-INSERT INTO recipe_ingredients (recipe_id, ingredients_id) VALUES (2, 2);
-INSERT INTO recipe_ingredients (recipe_id, ingredients_id) VALUES (2, 3);
+INSERT INTO recipe_ingredients (recipe_id, ingredients_id) VALUES (2, 4);
 
--- Latte:
 INSERT INTO recipe_ingredients (recipe_id, ingredients_id) VALUES (3, 1);
-INSERT INTO recipe_ingredients (recipe_id, ingredients_id) VALUES (3, 2);
-INSERT INTO recipe_ingredients (recipe_id, ingredients_id) VALUES (3, 3);
+INSERT INTO recipe_ingredients (recipe_id, ingredients_id) VALUES (3, 4);
 
--- Mocha:
 INSERT INTO recipe_ingredients (recipe_id, ingredients_id) VALUES (4, 1);
-INSERT INTO recipe_ingredients (recipe_id, ingredients_id) VALUES (4, 2);
-INSERT INTO recipe_ingredients (recipe_id, ingredients_id) VALUES (4, 3);
 INSERT INTO recipe_ingredients (recipe_id, ingredients_id) VALUES (4, 4);
-INSERT INTO recipe_ingredients (recipe_id, ingredients_id) VALUES (4, 7);
+INSERT INTO recipe_ingredients (recipe_id, ingredients_id) VALUES (4, 5);
+INSERT INTO recipe_ingredients (recipe_id, ingredients_id) VALUES (4, 8);
