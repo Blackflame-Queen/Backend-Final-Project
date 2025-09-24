@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/coffee-recipes")
+@RequestMapping("/coffee-recipes")
 @Slf4j
 public class RecipesController {
 
