@@ -1,8 +1,10 @@
 package coffee.recipes.controller;
 
 import coffee.recipes.controller.model.CoffeeRecipesData;
+import coffee.recipes.controller.model.IngredientDTO;
 import coffee.recipes.controller.model.RatioDTO;
 import coffee.recipes.controller.model.RecipeDTO;
+import coffee.recipes.controller.model.SpecialEquipmentDTO;
 import coffee.recipes.entity.Ingredients;
 import coffee.recipes.entity.Ratios;
 import coffee.recipes.entity.Recipe;
@@ -70,16 +72,18 @@ public class RecipesController {
     
     @GetMapping("/ingredients")
     @ResponseStatus(HttpStatus.OK)
-    public List<Ingredients> getAllIngredients() {
+    public List<IngredientDTO> getAllIngredients() {
         log.info("Retrieving all ingredients");
-        return coffeeRecipesService.getAllIngredients();
+        List<Ingredients> ingredients = coffeeRecipesService.getAllIngredients();
+        return coffeeRecipesData.ingredientsToDtos(ingredients);
     }
     
     @GetMapping("/equipment")
     @ResponseStatus(HttpStatus.OK)
-    public List<SpecialEquipment> getAllSpecialEquipment() {
+    public List<SpecialEquipmentDTO> getAllSpecialEquipment() {
         log.info("Retrieving all special equipment");
-        return coffeeRecipesService.getAllSpecialEquipment();
+        List<SpecialEquipment> equipment = coffeeRecipesService.getAllSpecialEquipment();
+        return coffeeRecipesData.equipmentToDtos(equipment);
     }
     
     

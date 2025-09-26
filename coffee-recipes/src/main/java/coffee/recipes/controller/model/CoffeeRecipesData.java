@@ -17,6 +17,37 @@ import java.util.stream.Collectors;
 @Component
 @Slf4j
 public class CoffeeRecipesData {
+    public IngredientDTO ingredientToDto(Ingredients ingredient) {
+        if (ingredient == null) {
+            return null;
+        }
+        return IngredientDTO.builder()
+            .ingredientsId(ingredient.getIngredientsId())
+            .ingredients(ingredient.getIngredients())
+            .build();
+    }
+
+    public List<IngredientDTO> ingredientsToDtos(List<Ingredients> ingredients) {
+        return ingredients.stream()
+            .map(this::ingredientToDto)
+            .collect(Collectors.toList());
+    }
+
+    public SpecialEquipmentDTO equipmentToDto(SpecialEquipment equipment) {
+        if (equipment == null) {
+            return null;
+        }
+        return SpecialEquipmentDTO.builder()
+            .specialEquipmentId(equipment.getSpecialEquipmentId())
+            .specialEquipment(equipment.getSpecialEquipment())
+            .build();
+    }
+
+    public List<SpecialEquipmentDTO> equipmentToDtos(List<SpecialEquipment> equipment) {
+        return equipment.stream()
+            .map(this::equipmentToDto)
+            .collect(Collectors.toList());
+    }
     
     @Autowired
     private IngredientsDao ingredientsDao;
