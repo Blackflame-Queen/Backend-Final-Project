@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+//ANCHOR [7] handles DTO conversions for the api implementation
 @Component
 @Slf4j
 public class CoffeeRecipesData {

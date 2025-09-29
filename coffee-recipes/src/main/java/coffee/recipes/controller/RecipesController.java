@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+//ANCHOR [7] here are the api endpoints for CRUD ops on recipes and related entities
 @RestController
 @RequestMapping("/coffee-recipes")
 @Slf4j

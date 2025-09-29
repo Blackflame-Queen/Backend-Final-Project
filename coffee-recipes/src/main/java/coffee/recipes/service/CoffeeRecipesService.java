@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.NoSuchElementException;
 
+//ANCHOR [2,3,4] the service layer handles CRUD ops for entities
 @Service
 public class CoffeeRecipesService {
     

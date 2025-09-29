@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.util.List;
 
+//ANCHOR [1,6] one of the required entities w/ a table, many-to-many relationship w/ Ingredients
 @Entity
 @Data
 @NoArgsConstructor

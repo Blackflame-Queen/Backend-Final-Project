@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+//ANCHOR [1] one of the required entities w/ a table
 @Entity
 @Data
 @NoArgsConstructor
