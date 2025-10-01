@@ -6,6 +6,7 @@ import coffee.recipes.entity.Recipe;
 import coffee.recipes.entity.SpecialEquipment;
 import coffee.recipes.dao.IngredientsDao;
 import coffee.recipes.dao.SpecialEquipmentDao;
+import coffee.recipes.service.CoffeeRecipesService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -55,6 +56,9 @@ public class CoffeeRecipesData {
     
     @Autowired
     private SpecialEquipmentDao specialEquipmentDao;
+    
+    @Autowired
+    private CoffeeRecipesService coffeeRecipesService;
 
     public RecipeDTO entityToDto(Recipe recipe) {
         if (recipe == null) {
@@ -112,13 +116,16 @@ public class CoffeeRecipesData {
             return null;
         }
         
-        Recipe recipe = new Recipe();
-        
+        Recipe recipe;
         if (recipeDTO.getRecipeId() != null) {
-            recipe.setRecipeId(recipeDTO.getRecipeId());
+            recipe = coffeeRecipesService.getRecipeById(recipeDTO.getRecipeId());
+            recipe.setRecipeName(recipeDTO.getRecipeName());
+            recipe.setDirections(recipeDTO.getDirections());
+        } else {
+            recipe = new Recipe();
+            recipe.setRecipeName(recipeDTO.getRecipeName());
+            recipe.setDirections(recipeDTO.getDirections());
         }
-        recipe.setRecipeName(recipeDTO.getRecipeName());
-        recipe.setDirections(recipeDTO.getDirections());
         
         if (recipeDTO.getSpecialEquipment() != null && !recipeDTO.getSpecialEquipment().isEmpty()) {
             String equipmentName = recipeDTO.getSpecialEquipment().get(0);
@@ -132,18 +139,32 @@ public class CoffeeRecipesData {
         }
         
         if (recipeDTO.getRatios() != null) {
-            Ratios ratios = new Ratios();
-            ratios.setCoffee(recipeDTO.getRatios().getCoffee());
-            ratios.setMatcha(recipeDTO.getRatios().getMatcha());
-            ratios.setWater(recipeDTO.getRatios().getWater());
-            ratios.setMilk(recipeDTO.getRatios().getMilk());
-            ratios.setChocolate(recipeDTO.getRatios().getChocolate());
-            ratios.setSyrup(recipeDTO.getRatios().getSyrup());
-            ratios.setCinnamon(recipeDTO.getRatios().getCinnamon());
-            ratios.setWhippedCream(recipeDTO.getRatios().getWhippedCream());
-            ratios.setBlendedIce(recipeDTO.getRatios().getBlendedIce());
-            ratios.setRecipe(recipe);
-            recipe.setRatios(ratios);
+            Ratios ratios;
+            if (recipeDTO.getRecipeId() != null && recipe.getRatios() != null) {
+                ratios = recipe.getRatios();
+                ratios.setCoffee(recipeDTO.getRatios().getCoffee());
+                ratios.setMatcha(recipeDTO.getRatios().getMatcha());
+                ratios.setWater(recipeDTO.getRatios().getWater());
+                ratios.setMilk(recipeDTO.getRatios().getMilk());
+                ratios.setChocolate(recipeDTO.getRatios().getChocolate());
+                ratios.setSyrup(recipeDTO.getRatios().getSyrup());
+                ratios.setCinnamon(recipeDTO.getRatios().getCinnamon());
+                ratios.setWhippedCream(recipeDTO.getRatios().getWhippedCream());
+                ratios.setBlendedIce(recipeDTO.getRatios().getBlendedIce());
+            } else {
+                ratios = new Ratios();
+                ratios.setCoffee(recipeDTO.getRatios().getCoffee());
+                ratios.setMatcha(recipeDTO.getRatios().getMatcha());
+                ratios.setWater(recipeDTO.getRatios().getWater());
+                ratios.setMilk(recipeDTO.getRatios().getMilk());
+                ratios.setChocolate(recipeDTO.getRatios().getChocolate());
+                ratios.setSyrup(recipeDTO.getRatios().getSyrup());
+                ratios.setCinnamon(recipeDTO.getRatios().getCinnamon());
+                ratios.setWhippedCream(recipeDTO.getRatios().getWhippedCream());
+                ratios.setBlendedIce(recipeDTO.getRatios().getBlendedIce());
+                ratios.setRecipe(recipe);
+                recipe.setRatios(ratios);
+            }
         }
         
         if (recipeDTO.getIngredients() != null && !recipeDTO.getIngredients().isEmpty()) {
